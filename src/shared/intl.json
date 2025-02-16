@@ -1,0 +1,15 @@
+{
+  "button.withdrawal": "Withdrawal",
+  "button.deposit": "Deposit",
+  "button.submit": "Submit",
+  "button.printStatement": "Print statement",
+  "landingScreen.openingMessage": "Welcome to {bankName}! What would you like to do?",
+  "deposit.input.text": "Please enter the amount to deposit: ",
+  "header.bankName": "{bankName}",
+  "footer.bankName": "\u00A9 {bankName}",
+  "button.quit": "Quit",
+  "quit.message": "Thank you for banking with {bankName}.\nHave a nice day!",
+  "deposit.message.after": "Thank you. ${amount} has been deposited to your account.\nIs there anything else you'd like to do?",
+  "withdrawal.input.text": "Please enter the amount to withdraw: ",
+  "withdrawal.message.after": "Thank you. ${amount} has been withdrawn.\nIs there anything else you'd like to do?"
+}
