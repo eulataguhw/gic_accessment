@@ -1,14 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { AccountState } from "../types/ReduxType";
+import { AccountState, TransactionType } from "../types/ReduxType";
 import { v4 as uuidv4 } from "uuid";
 import { TRANSACTION_TYPE } from "../constants/common";
 
-const newTransaction = (amount, balance, type) => {
+const newTransaction = (
+  amount: string,
+  balance: string,
+  type: TransactionType,
+) => {
   return {
     timestamp: new Date(),
     id: uuidv4(),
-    amount: type === "deposit" ? amount : `-${amount}`,
+    amount: type === TRANSACTION_TYPE.DEBIT ? amount : `-${amount}`,
     balance,
     type,
   };
@@ -33,7 +37,7 @@ export const accountSlice = createSlice({
         newTransaction(
           amount.toFixed(2),
           newBalance.toFixed(2),
-          TRANSACTION_TYPE.DEPOSIT,
+          TRANSACTION_TYPE.DEBIT,
         ),
       ];
       return { ...state, balance: amount, transactions };
@@ -46,7 +50,7 @@ export const accountSlice = createSlice({
         newTransaction(
           amount.toFixed(2),
           newBalance.toFixed(2),
-          TRANSACTION_TYPE.WITHDRAW,
+          TRANSACTION_TYPE.CREDIT,
         ),
       ];
       return { ...state, balance: newBalance, transactions };

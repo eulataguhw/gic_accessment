@@ -10,6 +10,6 @@ export const BUTTON_NAMES = {
 };
 
 export const TRANSACTION_TYPE = {
-  DEPOSIT: "deposit",
-  WITHDRAW: "withdrawal",
-};
+  DEBIT: "DEBIT",
+  CREDIT: "CREDIT",
+} as const;
