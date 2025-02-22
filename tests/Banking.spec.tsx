@@ -1,13 +1,18 @@
-import { beforeAll, beforeEach, describe, expect, test } from "vitest";
+import "@testing-library/jest-dom";
+
+import { beforeAll, describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import App from "../src/App";
 
 describe("Testing Landing Screen", () => {
-  // beforeEach(() => render(<App />));
-  beforeAll(() => render(<App />));
+  test("initial render", () => {
+    const { asFragment } = render(<App />);
+    expect(asFragment).toMatchSnapshot();
+  });
   test("Test banking flow", async () => {
+    render(<App />);
     const user = userEvent.setup();
     const landingScreenMessageEl = screen.getByRole("heading", {
       name: /welcome to awesome gic bank/i,
@@ -71,30 +76,4 @@ describe("Testing Landing Screen", () => {
     });
     expect(quitMessageEl).toBeInTheDocument();
   });
-  // test("Render Landing Screen", () => {
-  //   const landingScreenMessageEl = screen.getByRole("heading", {
-  //     name: /welcome to awesome gic bank/i,
-  //   });
-  //   const withdrawalBtnEl = screen.getByRole("button", {
-  //     name: /withdrawal/i,
-  //   });
-  //   const depositBtnEl = screen.getByRole("button", { name: /deposit/i });
-  //   const printStatementBtnEl = screen.getByRole("button", {
-  //     name: /print/i,
-  //   });
-  //   const quitBtnEl = screen.getByRole("button", { name: /quit/i });
-  //   expect(landingScreenMessageEl).toBeInTheDocument();
-  //   expect(withdrawalBtnEl).toBeInTheDocument();
-  //   expect(depositBtnEl).toBeInTheDocument();
-  //   expect(printStatementBtnEl).toBeInTheDocument();
-  //   expect(quitBtnEl).toBeInTheDocument();
-  // });
-  // test("test on click of any button to route", async () => {
-  //   const quitBtnEl = screen.getByRole("button", { name: /quit/i });
-  //   await userEvent.click(quitBtnEl);
-  //   const quitMessageEl = screen.getByRole("heading", {
-  //     name: /thank you/i,
-  //   });
-  //   expect(quitMessageEl).toBeInTheDocument();
-  // });
 });

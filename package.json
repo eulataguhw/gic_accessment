@@ -20,7 +20,7 @@
   "scripts": {
     "start": "webpack serve --open --hot",
     "build": "webpack",
-    "unit": "vitest Banking.spec.tsx --coverage",
+    "unit": "vitest --coverage",
     "e2e": "npx playwright test --ui",
     "eject": "react-scripts eject"
   },

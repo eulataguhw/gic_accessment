@@ -17,3 +17,7 @@ You may also see any lint errors in the console.
 ### `npm run unit`
 
 Runs the app in vitest coverage mode.
+
+### `npm run e2e`
+
+Runs playright and test the specs.ts in .e2e folder.

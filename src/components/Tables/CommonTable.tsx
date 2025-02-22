@@ -27,7 +27,7 @@ type Row_Type = {
   sx?: SxProps;
 };
 
-interface ICommonTableProps extends TableProps {
+export interface ICommonTableProps extends TableProps {
   rows: Array<Row_Type>;
   headers: Array<Header_Type>;
 }
@@ -37,14 +37,8 @@ const getData = (
   type: "text" | "amount" | "number" | "date" | "",
 ) => {
   switch (type) {
-    case "text": {
-      return value;
-    }
     case "amount": {
       return `${Number(value).toFixed(2)}`;
-    }
-    case "number": {
-      return Number(value);
     }
     case "date": {
       return new Date(value).toLocaleDateString("en-SG", {
@@ -57,9 +51,6 @@ const getData = (
         hour12: true,
       });
     }
-
-    default:
-      return value;
   }
 };
 
@@ -74,7 +65,7 @@ const CommonTable = (props: ICommonTableProps) => {
         <TableHead>
           <TableRow>
             {headers?.map((header: Header_Type) => (
-              <TableCell sx={header.sx ?? {}}>{header.title}</TableCell>
+              <TableCell sx={header.sx}>{header.title}</TableCell>
             ))}
           </TableRow>
         </TableHead>
@@ -91,7 +82,7 @@ const CommonTable = (props: ICommonTableProps) => {
                 <TableCell
                   component="th"
                   scope="row"
-                  sx={data.sx ?? {}}
+                  sx={data.sx}
                 >
                   {getData(data.data.value, data.data.type)}
                 </TableCell>

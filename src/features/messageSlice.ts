@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { FormattedMessageType } from "../types/CommonTypes";
 import { BANK_NAME } from "../constants/common";
 
-const initialState: FormattedMessageType = {
+export const initialState: FormattedMessageType = {
   id: "landingScreen.openingMessage",
   value: { bankName: BANK_NAME },
 };
